@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 130vh;
+}
+
+.main {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.500), rgba(0, 0, 0, 0.500), rgba(0, 0, 0, 0.500)), url('images/bkg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 95vh;
+    clip-path: polygon(0% 0%, 100% 0, 100% 80%, 50% 100%, 0% 80%);
+    overflow: hidden;
+}
+
+.logobox {
+    width: 65px;
+    margin-left: 100px;
+    margin-top: 10px;
+    margin-right: 100px;
+    border: 2px solid white;
+    height: 30px;
+    text-align: left;
+    color: white;
+    padding-top: 2px;
+}
+
+.navbar {
+    display: flex;
+    position: relative;
+    text-align: left;
+    height: 50px;
+    width: 1365px;
+}
+
+.menu {
+    margin-left: 100px;
+    display: flex;
+    width: auto;
+    float: center;
+    height: 70px;
+}
+
+ul li {
+    display: inline-block;
+    list-style: none;
+    margin-left: 40px;
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+ul li a {
+    font-family: sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+a.hrline{
+    border-bottom: 1px solid orangered;
+    width: 100px;
+}
+
+ul li a:hover{
+    color: orange;
+    margin-bottom: 10px;
+    border-bottom: 1px solid orange;
+    padding-bottom: 12px;
+}
+
+.middata {
+    align-content: center;
+    position: absolute;
+    display: flex;
+    height: 500px;
+    width: 100%;
+}
+
+.btn {
+    height: 25px;
+    width: 25px;
+    border: 1px solid rgb(56, 56, 56);
+    background-color: rgb(56, 56, 56);
+    color: white;
+}
+
+.content {
+    color: white;
+    text-align: center;
+    margin-top: 150px;
+    height: 500px;
+    width: 90%;
+    font-weight: 10px;
+}
+
+.space {
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 10px;
+    font-size: 50px;
+    margin-left: 270px;
+    border: 2px solid transparent;
+    width: 700px;
+    border-radius: 50px;
+}
+
+button {
+    height: 60px;
+    width: 120px;
+    border: 1px solid gray;
+    background-color: transparent;
+    color: white;
+    padding-top: 5px;
+    margin-top: 240px;
+    padding: 50px;
+}
+
+.btn-brand {
+    background-color: transparent;
+    color: white;
+    border-radius: 5px;
+    font-weight: 600;
+    border: gray 2px solid;
+    padding: 0.8rem 1.8rem;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.btn-brand:hover, .btn:hover {
+    border: 1px solid orange;
+    background-color: orange;
+    color: black;
+}
+
+.round {
+    position: absolute;
+    left: 48.5%;
+    top: 550px;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    background-color: white;
+    padding: 10px 10px 10px 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.round:hover {
+    background-color: rgb(206, 255, 253);
+}
+
+.cardmain {
+    display: flex;
+    align-items: center;
+    height: 220px;
+    width: 98.5vw;
+    justify-content: space-around;
+}
+
+.cardmain .card {
+    font-family: sans-serif;
+    position: relative;
+    height: 200px;
+    width: 275px;
+    margin: 20px;
+    overflow: hidden;
+}
+
+.box {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+    border: 1px solid gray;
+    background-color: white;
+}
+
+.box:hover {
+    rotate: 45deg;
+    transition: 1s;
+}
