@@ -1,0 +1,58 @@
+/* BODY DECLARATION */
+body {
+    height: 700px;
+    display: flex;
+    justify-content: space-around;
+    background-image: url('BKG.JPG');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+}
+
+/* DIV EFFECT */
+#box {
+    display: block;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 60px;
+    height: 500px;
+    width: 1000px;
+    background-color: lightgray;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
+}
+
+#innerbox {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#innerbox1,
+#innerbox2,
+#innerbox3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    height: 200px;
+    width: 200px;
+    border: 2px black solid;
+}
+
+/* IMAGE EFFECT DECLARATION */
+img {
+    height: 200px;
+    width: 200px;
+}
+
+/* BUTTON EFFECT DECLARATION */
+button {
+    margin-top: 20px;
+    margin-left: 750px;
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    border: 2px black solid;
+}

@@ -1,0 +1,66 @@
+/* BACKGROUND COLOR EFFECT DECLARATION */
+
+#bkgcolor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    height: 600px;
+    width: 1200px;
+    border-radius: 20px;
+    background-color: white;
+}
+
+/* COLOR1 - COLOR6 ID STYLE EFFECT DECLARATION  */
+
+#color1,
+#color2,
+#color3,
+#color4,
+#color5,
+#color6 {
+    height: 300px;
+    width: 150px;
+    margin: 0 10px 0 10px;
+    justify-content: center;
+    border: 3px solid white;
+}
+
+/* COLOR1 - COLOR6 ID BACKGROUND COLOR EFFECT DECLARATION  */
+
+#color1 {
+    background-color: red;
+}
+
+#color2 {
+    background-color: skyblue;
+}
+
+#color3 {
+    background-color: lightgreen;
+}
+
+#color4 {
+    background-color: black;
+}
+
+#color5 {
+    background-color: mediumvioletred;
+}
+
+#color6 {
+    background-color: brown;
+}
+
+/* COLOR1 - COLOR6 ID - HOVER EFFECT DECLARATION */
+
+#color1:hover,
+#color2:hover,
+#color3:hover,
+#color4:hover,
+#color5:hover,
+#color6:hover {
+    border: 3px solid black;
+    scale: 1.1;
+    transition: 1s;
+}
