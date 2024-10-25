@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Logout System</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #a55eea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#loginForm, #welcomeScreen {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 250px;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Login form -->
+    <div id="loginForm">
+        <h2>Login</h2>
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="admin" required><br><br>
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="password" required><br><br>
+        <button onclick="login()">Login</button>
+    </div>
+
+    <!-- Welcome message after login -->
+    <div id="welcomeScreen" style="display:none;">
+        <h2>Welcome</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+   <script>
+    function login() {
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    // Hardcoded login credentials
+    if (username === "admin" && password === "password") {
+        // Hide login form
+        document.getElementById("loginForm").style.display = "none";
+        // Show welcome screen
+        document.getElementById("welcomeScreen").style.display = "block";
+    } else {
+        alert("Invalid username or password.");
+    }
+}
+
+function logout() {
+    // Hide welcome screen
+    document.getElementById("welcomeScreen").style.display = "none";
+    // Show login form
+    document.getElementById("loginForm").style.display = "block";
+}
+
+   </script>
+</body>
+</html>

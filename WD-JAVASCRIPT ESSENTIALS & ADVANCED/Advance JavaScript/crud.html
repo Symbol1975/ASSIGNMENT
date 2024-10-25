@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD with LocalStorage</title>
+   <style>
+   body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+h2, h3 {
+    text-align: center;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Edit and Delete button styles */
+li button {
+    background-color: rgb(183, 183, 179); 
+    color: black;             
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;        
+    border-radius: 5px;       
+    margin-left: 10px;
+    font-weight: bold;        /* Bold text */
+}
+
+
+li button:hover {
+    background-color: #eeede75c;
+    color: black;
+}
+
+
+
+   </style>
+</head>
+<body>
+    <div class="container">
+        <h2>CRUD with LocalStorage</h2>
+        <input type="text" id="itemInput" placeholder="Enter item">
+        <button onclick="addItem()">Add Item</button>
+
+        <h3>Items:</h3>
+        <ul id="itemList"></ul>
+    </div>
+
+   <script>
+// Function to add item to localStorage and update UI
+function addItem() {
+    const itemInput = document.getElementById('itemInput');
+    const item = itemInput.value.trim();
+
+    if (item) {
+        let items = JSON.parse(localStorage.getItem('items')) || [];
+        items.push(item);
+        localStorage.setItem('items', JSON.stringify(items));
+        itemInput.value = ''; // Clear input field
+        renderItems();
+    }
+}
+
+// Function to render the list of items from localStorage
+function renderItems() {
+    const itemList = document.getElementById('itemList');
+    itemList.innerHTML = ''; // Clear list before rendering
+
+    let items = JSON.parse(localStorage.getItem('items')) || [];
+
+    items.forEach((item, index) => {
+        let li = document.createElement('li');
+        li.innerHTML = `${item} 
+            <button onclick="editItem(${index})">Edit</button> 
+            <button onclick="deleteItem(${index})">Delete</button>`;
+        itemList.appendChild(li);
+    });
+}
+
+// Function to edit an item in localStorage
+function editItem(index) {
+    let items = JSON.parse(localStorage.getItem('items')) || [];
+    const newItem = prompt("Edit item:", items[index]);
+
+    if (newItem !== null && newItem.trim()) {
+        items[index] = newItem.trim();
+        localStorage.setItem('items', JSON.stringify(items));
+        renderItems();
+    }
+}
+
+// Function to delete an item from localStorage
+function deleteItem(index) {
+    let items = JSON.parse(localStorage.getItem('items')) || [];
+    items.splice(index, 1);
+    localStorage.setItem('items', JSON.stringify(items));
+    renderItems();
+}
+
+// Render items on page load
+window.onload = function() {
+    renderItems();
+};
+
+   </script>
+</body>
+</html>

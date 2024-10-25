@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Coordinates with Throttling</title>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    }
+
+ 
+
+    .box {
+        width: 400px;
+        height: 300px;
+        border: 2px dashed #aaa;
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #coordinates {
+        font-size: 18px;
+        margin-bottom: 180px;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+      
+        <div class="box" id="box">
+            <p id="coordinates">Mouse coordinates: </p>
+        </div>
+    </div>
+    <script>
+        function throttle(func, limit) {
+        let lastFunc;
+        let lastRan;
+        return function() {
+            const context = this;
+            const args = arguments;
+            if (!lastRan) {
+                func.apply(context, args);
+                lastRan = Date.now();
+            } else {
+                clearTimeout(lastFunc);
+                lastFunc = setTimeout(function() {
+                    if ((Date.now() - lastRan) >= limit) {
+                        func.apply(context, args);
+                        lastRan = Date.now();
+                    }
+                }, limit - (Date.now() - lastRan));
+            }
+        };
+    }
+
+    const box = document.getElementById('box');
+    const coordinates = document.getElementById('coordinates');
+
+    box.addEventListener('mousemove', throttle(function(e) {
+        const x = e.clientX - box.offsetLeft;
+        const y = e.clientY - box.offsetTop;
+        coordinates.innerText = `Mouse coordinates: ${x}, ${y}`;
+    }, 100));
+
+    </script>
+</body>
+</html>

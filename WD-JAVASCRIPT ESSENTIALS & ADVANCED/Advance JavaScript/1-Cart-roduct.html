@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Subtotal Calculator</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.cart-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+input {
+    width: 60px;
+}
+
+button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkred;
+}
+img{
+    height: 100px;
+    width: 100px;
+}
+    </style>
+</head>
+<body>
+    <div class="cart-container">
+        <h2>Shopping Cart</h2>
+        <table id="cartTable">
+            <thead>
+                <tr>
+                    <th>Product Info</th>
+                    <th>Quantity</th>
+                    <th>Price (per unit)</th>
+                    <th>Price (subtotal)</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="images/product1.jpg" alt="">Fortunata Window Hardware - Decorative Holdbacks - Mocha</td>
+                    <td><input type="number" value="2" min="1" class="quantity"></td>
+                    <td class="price-per-unit">29.99</td>
+                    <td class="subtotal">59.98</td>
+                    <td><button class="remove-btn">Remove</button></td>
+                </tr>
+                <tr>
+                    <td><img src="images/product2.jpg" alt="">Woven Trellis Window Hardware - Clip Rings - Bronze</td>
+                    <td><input type="number" value="1" min="1" class="quantity"></td>
+                    <td class="price-per-unit">12.99</td>
+                    <td class="subtotal">12.99</td>
+                    <td><button class="remove-btn">Remove</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Total: $<span id="total">72.97</span></h3>
+    </div>
+
+    <script>
+        // Function to calculate subtotal for each row and update total price
+function updateCart() {
+    let total = 0;
+
+    const rows = document.querySelectorAll("#cartTable tbody tr");
+    rows.forEach((row) => {
+        const quantityInput = row.querySelector(".quantity");
+        const pricePerUnit = parseFloat(row.querySelector(".price-per-unit").textContent);
+        const subtotalCell = row.querySelector(".subtotal");
+
+        const quantity = parseInt(quantityInput.value);
+        const subtotal = quantity * pricePerUnit;
+        subtotalCell.textContent = subtotal.toFixed(2);
+
+        total += subtotal;
+    });
+
+    document.getElementById("total").textContent = total.toFixed(2);
+}
+
+// Event listener for quantity input changes
+document.querySelectorAll(".quantity").forEach((input) => {
+    input.addEventListener("input", updateCart);
+});
+
+// Event listener for remove buttons
+document.querySelectorAll(".remove-btn").forEach((button) => {
+    button.addEventListener("click", (e) => {
+        const row = e.target.closest("tr");
+        row.remove();
+        updateCart();
+    });
+});
+
+// Initial cart update
+updateCart();
+    </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop</title>
+   <style>
+    body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f7f7f7;
+}
+
+.container {
+    width: 200px;
+    padding: 20px;
+    margin: 20px;
+    border: 2px dotted #0965c7;
+    border-radius: 10px;
+    background-color: #e7f0ff;
+    min-height: 150px;
+}
+
+.draggable {
+    background-color: #0965c7;
+    color: white;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: grab;
+    text-align: center;
+}
+
+.draggable:active {
+    cursor: grabbing;
+}
+
+#container2 {
+    background-color: #d0ffd0;
+}
+
+   </style>
+</head>
+<body>
+
+    <div class="container" id="container1">
+     
+        <div class="draggable" draggable="true" id="item1">Drag me 1</div>
+        <div class="draggable" draggable="true" id="item2">Drag me 2</div>
+        <div class="draggable" draggable="true" id="item3">Drag me 3</div>
+    </div>
+
+    <div class="container" id="container2">
+    
+        <!-- Items will be dropped here -->
+    </div>
+
+    <script>
+        // Select all draggable items
+const draggables = document.querySelectorAll('.draggable');
+
+// Select the containers
+const container1 = document.getElementById('container1');
+const container2 = document.getElementById('container2');
+
+// Add drag event listeners to draggable items
+draggables.forEach(draggable => {
+    draggable.addEventListener('dragstart', dragStart);
+    draggable.addEventListener('dragend', dragEnd);
+});
+
+function dragStart(e) {
+    // Set the id of the draggable element being dragged
+    e.dataTransfer.setData('text/plain', e.target.id);
+    setTimeout(() => {
+        e.target.style.display = 'none'; // Make item disappear when dragging starts
+    }, 0);
+}
+
+function dragEnd(e) {
+    e.target.style.display = 'block'; // Make item visible again when drag ends
+}
+
+// Add dragover and drop event listeners to container 2
+container2.addEventListener('dragover', dragOver);
+container2.addEventListener('drop', drop);
+
+function dragOver(e) {
+    e.preventDefault(); // Necessary to allow dropping
+}
+
+function drop(e) {
+    e.preventDefault();
+
+    // Get the id of the item being dragged
+    const id = e.dataTransfer.getData('text/plain');
+    const draggable = document.getElementById(id);
+
+    // Append the dragged item to container 2
+    container2.appendChild(draggable);
+}
+
+    </script>
+</body>
+</html>
