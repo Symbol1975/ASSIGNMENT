@@ -1,0 +1,25 @@
+body {
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .App {
+    text-align: center;
+  }
+  
+  button {
+    margin: 10px;
+  }
+  
+  .MuiListItemText-root {
+    padding-right: 20px;
+  }
+  
+  .MuiButton-root {
+    margin-top: 15px;
+  }
+  
+  form {
+    width: 300px;
+    margin: 50px auto;
+  }
+  
